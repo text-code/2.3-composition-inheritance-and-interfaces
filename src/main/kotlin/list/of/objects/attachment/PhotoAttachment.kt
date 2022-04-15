@@ -3,6 +3,9 @@ package list.of.objects.attachment
 import Attachment
 
 data class PhotoAttachment(
+    override val type: String = "photo",
     val id: Int,
-    val photoUrl: String,
-) : Attachment("Photo")
+    val albumId: Int,
+    val ownerId: Int,
+    val userId: Int,
+) : Attachment("photo")

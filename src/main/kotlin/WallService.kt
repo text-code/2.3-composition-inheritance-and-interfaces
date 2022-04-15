@@ -1,5 +1,3 @@
-import list.of.objects.attachment.*
-
 object WallService {
     private var posts = emptyArray<Post>()
     private var listId: Int = 0
@@ -12,23 +10,15 @@ object WallService {
     }
 
     fun update(postUpdate: Post): Boolean {
-        for (post in posts) {
+        for ((index, post) in posts.withIndex()) {
             if (postUpdate.id == post.id) {
                 val newPost = postUpdate.copy(ownerId = post.ownerId, date = post.date)
-                posts[post.id - 1] = newPost
-                posts.forEach { i -> println(i) }
+                posts[index] = newPost
                 return true
             } else if (postUpdate.id >= posts.size) {
                 return false
             }
         }
         return false
-    }
-
-    fun showAttachment(attachment: Attachment) {
-        when (attachment.type) {
-            "Photo" -> (attachment as PhotoAttachment).photoUrl
-            "Video" -> (attachment as VideoAttachment).videoUrl
-        }
     }
 }

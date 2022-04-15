@@ -3,6 +3,9 @@ package list.of.objects.attachment
 import Attachment
 
 data class VideoAttachment(
+    override val type: String = "video",
     val id: Int,
-    val videoUrl: String,
-) : Attachment("Video")
+    val albumId: Int,
+    val ownerId: Int,
+    val userId: Int,
+) : Attachment("video")
